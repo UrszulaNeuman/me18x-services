@@ -8,6 +8,7 @@ services:
       file: ../../include/ioc.yml
 
     image: ghcr.io/epics-containers/ioc-adaravis-runtime:2024.11.2
+    network_mode: "host"
 
     labels:
       version: 0.1.0
@@ -26,7 +27,4 @@ services:
 configs:
   me18x-di-ioc-01_config:
     file: ./config
-
-include:
-  - path: ../../include/networks.yml
 

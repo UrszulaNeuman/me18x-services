@@ -16,34 +16,5 @@
 
 include:
   # all profiles
-  #- services/bl01t-ea-test-01/compose.yml
-  #- services/bl01t-di-cam-01/compose.yml
   - services/me18x-di-ioc-01/compose.yml
-    #- services/bl01t-mo-sim-01/compose.yml
-    # - services/gateway/compose.yml
-  - services/pvagw/compose.yml
 
-  # develop profile only
-  # - services/phoebus/compose.yml
-
-  # deploy profile only
-  #  - services/epics-opis/compose.yml
-
-services:
-  init:
-    image: ubuntu
-    security_opt:
-      - label=disable
-    restart: no
-    volumes:
-      - .:/workspace
-    command: /bin/bash -c "/workspace/include/init.sh"
-    environment:
-      - EPICS_CA_SERVER_PORT
-      - EPICS_CA_REPEATER_PORT
-      - EPICS_PVA_SERVER_PORT
-      - CA_SUBNET
-      - CA_BROADCAST
-      - EPICS_PVA_NAME_SERVERS
-      - EPICS_CA_NAME_SERVERS
-      - EPICS_CA_ADDR_LIST
