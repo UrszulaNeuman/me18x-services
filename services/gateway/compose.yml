@@ -32,6 +32,7 @@ services:
 
     networks:
       channel_access:
+              # ipv4_address: 172.23.190.255
 
     configs:
       - source: ca-gateway_config

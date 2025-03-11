@@ -5,9 +5,10 @@
 services:
   # linux IOCs that run in a container #########################################
   linux_ioc: &linux_ioc
+    network_mode: "host"
     labels:
       # a reference to which repository created this IOC
-      ioc_group: bl01t
+      ioc_group: me18x
       # let tools identify which containers are IOCs
       is_ioc: true
       # in K8S each IOC can have an indication of what physical location it
@@ -24,8 +25,8 @@ services:
       # a prefix for devIocStats PVs. Configured externally for health_check
       IOC_PREFIX:
       IOC_LOCATION: localhost
-      BEAMLINE: bl01t
-      IOC_GROUP: bl01t
+      BEAMLINE: me18x
+      IOC_GROUP: me18x
       EPICS_CA_SERVER_PORT: ${EPICS_CA_SERVER_PORT}
       EPICS_CA_REPEATER_PORT: ${EPICS_CA_REPEATER_PORT}
       EPICS_PVA_SERVER_PORT: ${EPICS_PVA_SERVER_PORT}
@@ -40,8 +41,8 @@ services:
     #    and ca-gateway + pvagw
     # network_mode: host
 
-    networks:
-      - channel_access
+    # networks:
+    # - channel_access
 
   # proxy services that each manage an RTEMS hard IOC ##########################
   rtems_ioc:

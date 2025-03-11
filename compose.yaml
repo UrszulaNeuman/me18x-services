@@ -16,17 +16,18 @@
 
 include:
   # all profiles
-  - services/bl01t-ea-test-01/compose.yml
-  - services/bl01t-di-cam-01/compose.yml
-  - services/bl01t-mo-sim-01/compose.yml
-  - services/gateway/compose.yml
+  #- services/bl01t-ea-test-01/compose.yml
+  #- services/bl01t-di-cam-01/compose.yml
+  - services/me18x-di-ioc-01/compose.yml
+    #- services/bl01t-mo-sim-01/compose.yml
+    # - services/gateway/compose.yml
   - services/pvagw/compose.yml
 
   # develop profile only
-  - services/phoebus/compose.yml
+  # - services/phoebus/compose.yml
 
   # deploy profile only
-  - services/epics-opis/compose.yml
+  #  - services/epics-opis/compose.yml
 
 services:
   init:

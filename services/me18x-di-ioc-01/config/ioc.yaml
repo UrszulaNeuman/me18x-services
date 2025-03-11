@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://github.com/epics-containers/ioc-adaravis/releases/download/2024.11.2/ibek.ioc.schema.json
+ioc_name: "{{ _global.get_env('IOC_NAME') }}"
+
+description: Very generic instance for testing generic IOCs
+
+entities:
+  - type: epics.EpicsEnvSet
+    name: EPICS_TZ
+    value: GMT0BST
+
+  - type: devIocStats.iocAdminSoft
+    IOC: "{{ ioc_name | upper }}"
+
+  - type: ADAravis.aravisCamera
+    ID: 172.23.190.8
+    P: ME18X-DI-XFEL-02
+    R: ":CAM:"
+    PORT: XFEL2.CAM
+    CLASS: AVT_Mako_G030B
+    
+    
+#CLASS: AVT_Mako_G040B
