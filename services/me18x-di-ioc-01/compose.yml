@@ -1,0 +1,30 @@
+services:
+
+  me18x-di-ioc-01:
+    container_name: me18x-di-ioc-01
+
+    extends:
+      service: linux_ioc
+      file: ../../include/ioc.yml
+
+    image: ghcr.io/epics-containers/ioc-adaravis-runtime:2024.11.2
+    network_mode: "host"
+
+    labels:
+      version: 0.1.0
+
+    environment:
+      IOCSH_PS1: me18x-di-ioc-01 >
+      IOC_NAME: me18x-di-ioc-01
+
+    volumes:
+      - ../../opi/auto-generated/me18x-di-ioc-01:/epics/opi
+
+    configs:
+      - source: me18x-di-ioc-01_config
+        target: epics/ioc/config
+
+configs:
+  me18x-di-ioc-01_config:
+    file: ./config
+
