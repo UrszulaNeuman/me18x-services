@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://github.com/epics-containers/ioc-adaravis/releases/download/2024.11.2/ibek.ioc.schema.json
+# yaml-language-server: $schema=https://github.com/epics-containers/ioc-adaravis/releases/download/2025.3.1/ibek.ioc.schema.json
 ioc_name: "{{ _global.get_env('IOC_NAME') }}"
 
 description: Very generic instance for testing generic IOCs
@@ -17,6 +17,79 @@ entities:
     R: ":CAM:"
     PORT: XFEL2.CAM
     CLASS: AVT_Mako_G030B
-    
-    
 #CLASS: AVT_Mako_G040B
+
+  - type: ADAravis.aravisSettings
+    camera: XFEL2.CAM
+
+  - type: ADCore.NDPosPlugin
+    NDARRAY_PORT: XFEL2.CAM
+    P: ME18X-DI-XFEL-02
+    PORT: XFEL2.POS
+    R: ":POS:"
+
+  - type: ADCore.NDProcess
+    NDARRAY_PORT: XFEL2.CAM
+    P: ME18X-DI-XFEL-02
+    PORT: XFEL2.PROC
+    R: ":PROC:"
+    ENABLED: 1
+
+  - type: ADCore.NDFileHDF5
+    ENABLED: 1
+    NDARRAY_PORT: XFEL2.CAM
+    P: ME18X-DI-XFEL-02
+    PORT: XFEL2.HDF
+    R: ":HDF5:"
+
+  - type: ADCore.NDFileJPEG
+    NDARRAY_PORT: XFEL2.CAM
+    P: ME18X-DI-XFEL-02
+    PORT: XFEL2.MJPG
+    R: ":MJPG:"
+
+  - type: ADCore.NDFileTIFF
+    NDARRAY_PORT: XFEL2.CAM
+    P: ME18X-DI-XFEL-02
+    PORT: XFEL2.TIFF
+    R: ":TIFF:"
+
+  - type: ADCore.NDOverlay
+    PORT: XFEL2.OVER
+    P: ME18X-DI-XFEL-02
+    R: ":OVER:"
+    NDARRAY_PORT: XFEL2.CAM
+    NOverlays: 4
+    ENABLED: 1
+
+  - type: ADCore.NDROI
+    PORT: XFEL2.ROI
+    P: ME18X-DI-XFEL-02
+    R: ":ROI:"
+    NDARRAY_PORT: XFEL2.CAM
+
+  - type: ADCore.NDStats
+    PORT: XFEL2.STAT
+    P: ME18X-DI-XFEL-02
+    R: ":STAT:"
+    NDARRAY_PORT: XFEL2.CAM
+    HIST_SIZE: 10
+    YSIZE: 100
+    XSIZE: 100
+
+  - type: ADCore.NDStdArrays
+    FTVL: UCHAR
+    NDARRAY_PORT: XFEL2.CAM
+    NELEMENTS: 38720
+    P: ME18X-DI-XFEL-02
+    PORT: XFEL2.ARR
+    R: ":ARR:"
+    TYPE: Int8
+
+  - type: ADCore.NDPvaPlugin
+    NDARRAY_PORT: XFEL2.CAM
+    P: ME18X-DI-XFEL-02
+    PORT: XFEL2.PVA
+    R: ":PVA:"
+    PVNAME: ME18X-DI-XFEL-02:PVA
+    ENABLED: 1
