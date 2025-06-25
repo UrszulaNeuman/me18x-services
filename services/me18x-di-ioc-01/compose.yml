@@ -7,7 +7,7 @@ services:
       service: linux_ioc
       file: ../../include/ioc.yml
 
-    image: ghcr.io/epics-containers/ioc-adaravis-runtime:2025.3.1
+    image: ghcr.io/epics-containers/ioc-adaravis-runtime:2025.5.1
     network_mode: "host"
 
     labels:
