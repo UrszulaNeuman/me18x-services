@@ -37,4 +37,4 @@ export UIDGID=$USER_ID:$USER_GID
 # default to the test profile for docker compose
 export COMPOSE_PROFILES=test
 # make a short alias for docker-compose for convenience
-alias dc='$docker compose'
+alias dc="$docker compose"
