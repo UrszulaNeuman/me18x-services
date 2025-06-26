@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=/epics/ibek-defs/ioc.schema.json
+# yaml-language-server: $schema=https://github.com/epics-containers/ioc-adaravis/releases/download/2025.5.1/ibek.ioc.schema.json
 
 ioc_name: "{{ _global.get_env('IOC_NAME') }}"
 
@@ -29,38 +29,32 @@ entities:
   #  P: ME18X-DI-XFEL-02
   #  PORT: XFEL2.POS
   #  R: ":POS:"
-
-    #  - type: ADCore.NDProcess
-    #NDARRAY_PORT: XFEL2.CAM
-    #P: ME18X-DI-XFEL-02
-    #PORT: XFEL2.PROC
-    #R: ":PROC:"
-
-    #- type: ADCore.NDFileHDF5
-    #NDARRAY_PORT: XFEL2.CAM
-    #P: ME18X-DI-XFEL-02
-    #PORT: XFEL2.HDF
-    #R: ":HDF5:"
-
-    #- type: ADCore.NDFileTIFF
-    #NDARRAY_PORT: XFEL2.CAM
-    #P: ME18X-DI-XFEL-02
-    #PORT: XFEL2.TIFF
-    #R: ":TIFF:"
-
-    #- type: ADCore.NDOverlay
-    #PORT: XFEL2.OVER
-    #P: ME18X-DI-XFEL-02
-    #R: ":OVER:"
-    #NDARRAY_PORT: XFEL2.CAM
-    #NOverlays: 4
-
-    # - type: ADCore.NDROI
-    #PORT: XFEL2.ROI
-    #P: ME18X-DI-XFEL-02
-    #R: ":ROI:"
-    #NDARRAY_PORT: XFEL2.CAM
- 
+  #  - type: ADCore.NDProcess
+  #NDARRAY_PORT: XFEL2.CAM
+  #P: ME18X-DI-XFEL-02
+  #PORT: XFEL2.PROC
+  #R: ":PROC:"
+  #- type: ADCore.NDFileHDF5
+  #NDARRAY_PORT: XFEL2.CAM
+  #P: ME18X-DI-XFEL-02
+  #PORT: XFEL2.HDF
+  #R: ":HDF5:"
+  #- type: ADCore.NDFileTIFF
+  #NDARRAY_PORT: XFEL2.CAM
+  #P: ME18X-DI-XFEL-02
+  #PORT: XFEL2.TIFF
+  #R: ":TIFF:"
+  #- type: ADCore.NDOverlay
+  #PORT: XFEL2.OVER
+  #P: ME18X-DI-XFEL-02
+  #R: ":OVER:"
+  #NDARRAY_PORT: XFEL2.CAM
+  #NOverlays: 4
+  # - type: ADCore.NDROI
+  #PORT: XFEL2.ROI
+  #P: ME18X-DI-XFEL-02
+  #R: ":ROI:"
+  #NDARRAY_PORT: XFEL2.CAM
   - type: ffmpegServer.ffmpegStream
     PORT: XFEL2.MJPG
     P: ME18X-DI-XFEL-02

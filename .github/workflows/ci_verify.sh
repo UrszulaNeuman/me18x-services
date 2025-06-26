@@ -11,7 +11,6 @@
 ROOT=$(realpath $(dirname ${0})/../..)
 set -xe
 
-
 # use docker if available else use podman
 if ! docker version &>/dev/null; then docker=podman; else docker=docker; fi
 
@@ -31,14 +30,19 @@ do
         runtime=/tmp/ioc-runtime/$(basename ${service})
         mkdir -p ${runtime}
 
+        # avoid issues with auto-gen genicam pvi files (ioc-adaravis only)
+        sed -i s/AutoADGenICam/ADGenICam/ ${service}/config/ioc.yaml
+
         # This will fail and exit if the ioc.yaml is invalid
+        # Also show the startup script we just generated (and verify it exists)
         $docker run --rm --entrypoint bash \
-            -v ${service}/config:/config \
-            -v ${runtime}:/epics/runtime \
+            -v ${service}/config:/config:z \
             ${image} \
-            -c 'ibek runtime generate /config/ioc.yaml /epics/ibek-defs/*'
-        # show the startup script we just generated (and verify it exists)
-        cat  ${runtime}/st.cmd
+            -c "
+            ibek runtime generate /config/ioc.yaml \
+              /epics/ibek-defs/*.ibek.support.yaml  &&
+            cat /epics/runtime/st.cmd
+            "
 
     fi
 done
