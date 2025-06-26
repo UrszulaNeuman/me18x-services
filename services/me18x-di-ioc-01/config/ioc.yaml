@@ -29,45 +29,36 @@ entities:
   #  PORT: XFEL2.POS
   #  R: ":POS:"
 
-  - type: ADCore.NDProcess
-    NDARRAY_PORT: XFEL2.CAM
-    P: ME18X-DI-XFEL-02
-    PORT: XFEL2.PROC
-    R: ":PROC:"
-    #ENABLED: 1
-
-  - type: ADCore.NDFileHDF5
-    #ENABLED: 1
-    NDARRAY_PORT: XFEL2.CAM
-    P: ME18X-DI-XFEL-02
-    PORT: XFEL2.HDF
-    R: ":HDF5:"
-
-    #  - type: ADCore.NDFileJPEG
-    # NDARRAY_PORT: XFEL2.CAM
+    #  - type: ADCore.NDProcess
+    #NDARRAY_PORT: XFEL2.CAM
     #P: ME18X-DI-XFEL-02
-    #PORT: XFEL2.MJPG
-    #R: ":MJPG:"
+    #PORT: XFEL2.PROC
+    #R: ":PROC:"
 
-  - type: ADCore.NDFileTIFF
-    NDARRAY_PORT: XFEL2.CAM
-    P: ME18X-DI-XFEL-02
-    PORT: XFEL2.TIFF
-    R: ":TIFF:"
+    #- type: ADCore.NDFileHDF5
+    #NDARRAY_PORT: XFEL2.CAM
+    #P: ME18X-DI-XFEL-02
+    #PORT: XFEL2.HDF
+    #R: ":HDF5:"
 
-  - type: ADCore.NDOverlay
-    PORT: XFEL2.OVER
-    P: ME18X-DI-XFEL-02
-    R: ":OVER:"
-    NDARRAY_PORT: XFEL2.CAM
-    NOverlays: 4
-    #ENABLED: 1
+    #- type: ADCore.NDFileTIFF
+    #NDARRAY_PORT: XFEL2.CAM
+    #P: ME18X-DI-XFEL-02
+    #PORT: XFEL2.TIFF
+    #R: ":TIFF:"
 
-  - type: ADCore.NDROI
-    PORT: XFEL2.ROI
-    P: ME18X-DI-XFEL-02
-    R: ":ROI:"
-    NDARRAY_PORT: XFEL2.CAM
+    #- type: ADCore.NDOverlay
+    #PORT: XFEL2.OVER
+    #P: ME18X-DI-XFEL-02
+    #R: ":OVER:"
+    #NDARRAY_PORT: XFEL2.CAM
+    #NOverlays: 4
+
+    # - type: ADCore.NDROI
+    #PORT: XFEL2.ROI
+    #P: ME18X-DI-XFEL-02
+    #R: ":ROI:"
+    #NDARRAY_PORT: XFEL2.CAM
  
   - type: ffmpegServer.ffmpegStream
     PORT: XFEL2.MJPG
@@ -76,29 +67,23 @@ entities:
     NDARRAY_PORT: XFEL2.CAM
     NDARRAY_ADDR: 0
 
-    #- type: ffmpegServer.ffmpegStream
-    #PORT: XFEL2.MJPG
+    #- type: ADCore.NDStats
+    #PORT: XFEL2.STAT
     #P: ME18X-DI-XFEL-02
-    #R: ":MJPG:"
+    #R: ":STAT:"
     #NDARRAY_PORT: XFEL2.CAM
+    #HIST_SIZE: 10
+    #YSIZE: 100
+    #XSIZE: 100
 
-  - type: ADCore.NDStats
-    PORT: XFEL2.STAT
-    P: ME18X-DI-XFEL-02
-    R: ":STAT:"
-    NDARRAY_PORT: XFEL2.CAM
-    HIST_SIZE: 10
-    YSIZE: 100
-    XSIZE: 100
-
-  - type: ADCore.NDStdArrays
-    FTVL: UCHAR
-    NDARRAY_PORT: XFEL2.CAM
-    NELEMENTS: 38720
-    P: ME18X-DI-XFEL-02
-    PORT: XFEL2.ARR
-    R: ":ARR:"
-    TYPE: Int8
+    #- type: ADCore.NDStdArrays
+    #FTVL: UCHAR
+    #NDARRAY_PORT: XFEL2.CAM
+    #NELEMENTS: 38720
+    #P: ME18X-DI-XFEL-02
+    #PORT: XFEL2.ARR
+    #R: ":ARR:"
+    #TYPE: Int8
 
     #- type: ADCore.NDPvaPlugin
     #NDARRAY_PORT: XFEL2.CAM
