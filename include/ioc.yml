@@ -5,9 +5,8 @@
 services:
   # linux IOCs that run in a container #########################################
   linux_ioc: &linux_ioc
-
     network_mode: "host"
-  
+
     labels:
       # a reference to which repository created this IOC
       ioc_group: me18x
@@ -33,4 +32,3 @@ services:
     tty: true
     stdin_open: true
     restart: unless-stopped
-

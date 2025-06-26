@@ -36,13 +36,13 @@ do
         # This will fail and exit if the ioc.yaml is invalid
         # Also show the startup script we just generated (and verify it exists)
         $docker run --rm --entrypoint bash \
-            -v ${service}/config:/config:z \
+            --security-opt label=disable \
+            -v ${service}/config:/config \
+            -v ${runtime}:/epics/runtime \
             ${image} \
-            -c "
-            ibek runtime generate /config/ioc.yaml \
-              /epics/ibek-defs/*.ibek.support.yaml  &&
-            cat /epics/runtime/st.cmd
-            "
+            -c 'ibek runtime generate /config/ioc.yaml /epics/ibek-defs/*.ibek.support.yaml'
+        # show the startup script we just generated (and verify it exists)
+        cat  ${runtime}/st.cmd
 
     fi
 done
