@@ -1,4 +1,5 @@
-# yaml-language-server: $schema=https://github.com/epics-containers/ioc-adaravis/releases/download/2025.5.1/ibek.ioc.schema.json
+# yaml-language-server: $schema=/epics/ibek-defs/ioc.schema.json
+
 ioc_name: "{{ _global.get_env('IOC_NAME') }}"
 
 description: Very generic instance for testing generic IOCs
@@ -6,7 +7,7 @@ description: Very generic instance for testing generic IOCs
 entities:
   - type: epics.EpicsEnvSet
     name: EPICS_TZ
-    value: GMT0BST
+    value: "0"
 
   - type: devIocStats.iocAdminSoft
     IOC: "{{ ioc_name | upper }}"
