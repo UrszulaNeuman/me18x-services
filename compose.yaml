@@ -16,5 +16,6 @@
 
 include:
   # all profiles
-  - services/me18x-di-ioc-01/compose.yml
+  # - services/me18x-di-ioc-01/compose.yml
+  - services/me18x-mo-ioc-02/compose.yml
 

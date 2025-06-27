@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://github.com/epics-containers/ioc-pmac/releases/download/2025.5.28/ibek.ioc.schema.json
+
+# TODO replace above with the generic IOC schema this IOC is based on
+ioc_name: "{{ _global.get_env('IOC_NAME') }}"
+
+description: Test instance for motion
+
+entities:
+  - type: epics.EpicsEnvSet
+    name: EPICS_TZ
+    value: "0"
+
+  - type: devIocStats.iocAdminSoft
+    IOC: "{{ ioc_name | upper }}"
+
+  - type: pmac.pmacAsynSSHPort
+    IP: 192.168.1.4:22
+    name: PPMAC2port
+    #username: root
+    #password: deltatau
+
+  - type: pmac.PowerPMAC
+    P: ME18X-MO-PPMAC-02
+    name: PPMAC02
+    pmacAsynSSHPort: PPMAC2port
+
+  - type: pmac.dls_pmac_asyn_motor
+    ACCL: 5
+    ADDR: 1
+    Controller: PPMAC02
+    DESC: Belt rotation
+    DHLM: 10000
+    DIR: Pos
+    DLLM: 0
+    EGU: mm
+    M: :ROT
+    MRES: 1 
+    P: ME18X-MO-BELT-01
+    PREC: 6
+    TWV: 0.01
+    VELO: 200
+    VMAX: 2000
+    
