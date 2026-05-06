@@ -1,0 +1,26 @@
+services:
+
+  me18x-ea-spump-01:
+    container_name: me18x-ea-spump-01
+
+    extends:
+      service: linux_ioc
+      file: ../../include/ioc.yml
+
+    image: ghcr.io/diamondlightsource/fastcs-wpi-micro4:latest
+    network_mode: "host"
+
+    command: ["ioc", "me18x-ea-spump-01"]
+
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    
+    stdin_open: true
+    tty: true
+    
+    labels:
+      version: 0.1.0
+
+    environment:
+      IOC_NAME: me18x-ea-spump-01
+
