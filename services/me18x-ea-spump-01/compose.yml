@@ -11,9 +11,12 @@ services:
     network_mode: "host"
 
     command: ["ioc", "me18x-ea-spump-01"]
+    
+    annotations:
+      run.oci.keep_original_groups: "1"
 
     devices:
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A10Q2NG8-if00-port0:/dev/ttyUSB0"
     
     stdin_open: true
     tty: true
